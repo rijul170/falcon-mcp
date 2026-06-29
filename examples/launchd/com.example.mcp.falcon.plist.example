@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.example.mcp.falcon</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/YOUR_USERNAME/.local/bin/falcon-mcp</string>
+    </array>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>FALCON_CLIENT_ID</key>
+        <string>YOUR_FALCON_CLIENT_ID</string>
+        <key>FALCON_CLIENT_SECRET</key>
+        <string>YOUR_FALCON_CLIENT_SECRET</string>
+        <key>FALCON_BASE_URL</key>
+        <string>https://api.crowdstrike.com</string>
+        <key>FALCON_MCP_TRANSPORT</key>
+        <string>streamable-http</string>
+        <key>FALCON_MCP_HOST</key>
+        <string>127.0.0.1</string>
+        <key>FALCON_MCP_PORT</key>
+        <string>8000</string>
+    </dict>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+    <key>ThrottleInterval</key>
+    <integer>30</integer>
+    <key>StandardOutPath</key>
+    <string>/Users/YOUR_USERNAME/Library/Logs/mcp/falcon.out.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/YOUR_USERNAME/Library/Logs/mcp/falcon.err.log</string>
+</dict>
+</plist>
