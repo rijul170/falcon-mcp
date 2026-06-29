@@ -8,6 +8,9 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![MCP Protocol](https://img.shields.io/badge/MCP%20Protocol-2024--11--05-blue)](https://spec.modelcontextprotocol.io/)
 [![Documentation](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://crowdstrike.github.io/falcon-mcp/)
+[![GitHub Stars](https://img.shields.io/github/stars/rijul170/falcon-mcp?style=social)](https://github.com/rijul170/falcon-mcp)
+
+> **For SOC analysts and security engineers:** Stop tab-switching between CrowdStrike, your ticketing system, and your notes. Ask Claude to triage the alert, pull the process tree, check if the hash ran on other hosts, and draft the IR note — all in one conversation.
 
 **falcon-mcp** is a Model Context Protocol (MCP) server that gives AI agents — including Claude — direct, structured access to the CrowdStrike Falcon platform for intelligent security operations.
 
@@ -332,6 +335,16 @@ This is a community-driven, open source project. While it is not an official Cro
 For questions, bug reports, and feature requests, please open a [GitHub Issue](https://github.com/CrowdStrike/falcon-mcp/issues). CrowdStrike customers may also contact Technical Support through established support channels.
 
 See [SUPPORT.md](SUPPORT.md) for more information.
+
+## Related MCP Servers
+
+These three servers cover complementary layers of a security stack — network/log (AlertLogic), endpoint protection (Sophos), and EDR/threat intel (CrowdStrike). Use them together for full-stack AI-powered SOC operations.
+
+| Server | Platform | Highlights |
+|--------|----------|------------|
+| [falcon-mcp](https://github.com/rijul170/falcon-mcp) | CrowdStrike Falcon | EDR telemetry, RTR, threat intel, MSSP Flight Control, 1,296 tools |
+| [sophos-central-mcp](https://github.com/rijul170/sophos-central-mcp) | Sophos Central | Endpoint isolation, Live Discover SQL, XDR, email/firewall/DNS, 334 tools |
+| [alertlogic-mcp](https://github.com/rijul170/alertlogic-mcp) | Alert Logic MDR | Incident response, SQL log search, SOAR, vulnerability management, 473 tools |
 
 ## License
 
