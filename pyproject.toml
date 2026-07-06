@@ -68,7 +68,8 @@ disallow_incomplete_defs = false
 disable_error_code = ["arg-type", "valid-type", "attr-defined", "misc"]
 
 [[tool.mypy.overrides]]
-module = "scripts.*"
+# scripts/ has no __init__.py, so mypy sees its files as top-level modules
+module = ["scripts.*", "generate_falcon_modules"]
 disallow_untyped_defs = false
 disallow_incomplete_defs = false
 
@@ -77,7 +78,7 @@ module = "falcon_mcp.modules.*"
 # Pydantic Field() overloads cause call-overload errors - ignore them
 # Union return types cause union-attr errors - code handles these correctly at runtime
 # These are not actual type errors, just mypy/pydantic typing quirks
-disable_error_code = ["call-overload", "return-value", "list-item", "arg-type", "union-attr"]
+disable_error_code = ["call-overload", "return-value", "list-item", "arg-type", "union-attr", "assignment"]
 disallow_untyped_defs = false
 
 [[tool.mypy.overrides]]

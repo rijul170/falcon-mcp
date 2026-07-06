@@ -13,7 +13,7 @@ To report a suspected vulnerability in this project:
 + Use [GitHub private vulnerability reporting](https://github.com/rijul170/falcon-mcp/security/advisories/new) (preferred), or
 + Open an issue in this repository if the vulnerability is not sensitive.
 
-Please do not report vulnerabilities in this project to CrowdStrike — they do not maintain it. Vulnerabilities in the CrowdStrike Falcon platform or the official falcon-mcp server should be reported to CrowdStrike via oss-security@crowdstrike.com.
+Please do not report vulnerabilities in this project to CrowdStrike — they do not maintain it. Vulnerabilities in the CrowdStrike Falcon platform or the official falcon-mcp server should be reported to CrowdStrike via <oss-security@crowdstrike.com>.
 
 ## Disclosure and Mitigation Process
 

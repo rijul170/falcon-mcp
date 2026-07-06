@@ -3,13 +3,13 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![MCP Protocol](https://img.shields.io/badge/MCP%20Protocol-2024--11--05-blue)](https://spec.modelcontextprotocol.io/)
 [![Python](https://img.shields.io/badge/python-3.11%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
-[![Tools](https://img.shields.io/badge/tools-1296-purple)](#architecture)
+[![Tools](https://img.shields.io/badge/tools-1296-purple)](#what-this-adds-over-the-official-server)
 [![GitHub Stars](https://img.shields.io/github/stars/rijul170/falcon-mcp?style=social)](https://github.com/rijul170/falcon-mcp)
 
 > [!NOTE]
 > **This is a community extension of CrowdStrike's official [falcon-mcp](https://github.com/CrowdStrike/falcon-mcp) server** (MIT licensed). It adds 106 auto-generated API wrapper modules (~904 additional tools) on top of the official curated tool set, for near-complete CrowdStrike Falcon API coverage. This project is **not affiliated with, maintained by, or endorsed by CrowdStrike**. If you only need the curated SOC workflows, use the [official server](https://github.com/CrowdStrike/falcon-mcp); use this project when you need API surface the official server doesn't expose yet.
 
-> **For SOC analysts and security engineers:** Stop tab-switching between CrowdStrike, your ticketing system, and your notes. Ask Claude to triage the alert, pull the process tree, check if the hash ran on other hosts, and draft the IR note — all in one conversation.
+**For SOC analysts and security engineers:** Stop tab-switching between CrowdStrike, your ticketing system, and your notes. Ask Claude to triage the alert, pull the process tree, check if the hash ran on other hosts, and draft the IR note — all in one conversation.
 
 **falcon-mcp-extended** is a Model Context Protocol (MCP) server that gives AI agents — including Claude — direct, structured access to the CrowdStrike Falcon platform for intelligent security operations.
 
@@ -20,7 +20,7 @@ This server bridges AI assistants and the CrowdStrike Falcon platform, enabling 
 ## What This Adds Over the Official Server
 
 | Layer | Module count | Approximate tool count | Enabled by default |
-|-------|-------------|------------------------|--------------------|
+| ------- | ------------- | ------------------------ | -------------------- |
 | Curated modules (from upstream, plus additions) | 50 | ~392 | Yes |
 | Auto-generated API wrappers (`gen_*`) — **this project's addition** | 106 | ~904 additional | No (opt-in) |
 
@@ -80,7 +80,7 @@ pip install git+https://github.com/rijul170/falcon-mcp
 All configuration is driven by environment variables (or a `.env` file in the working directory). CLI flags mirror every env var and take precedence when both are set.
 
 | Variable | Required | Description | Example |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `FALCON_CLIENT_ID` | Required | CrowdStrike API Client ID | `abc123def456` |
 | `FALCON_CLIENT_SECRET` | Required | CrowdStrike API Client Secret | `your-client-secret` |
 | `FALCON_BASE_URL` | Required | API endpoint URL for your region | `https://api.crowdstrike.com` |
@@ -99,7 +99,7 @@ All configuration is driven by environment variables (or a `.env` file in the wo
 **Region base URLs:**
 
 | Region | Base URL |
-|--------|----------|
+| -------- | ---------- |
 | US-1 | `https://api.crowdstrike.com` |
 | US-2 | `https://api.us-2.crowdstrike.com` |
 | EU-1 | `https://api.eu-1.crowdstrike.com` |
@@ -219,7 +219,7 @@ export FALCON_MEMBER_CID="CHILD_CID_HERE"
 ## Available Modules
 
 | Module | Key Capabilities |
-|--------|-----------------|
+| -------- | ----------------- |
 | `alerts` | Search and manage unified alerts across all Falcon alert types |
 | `detections` | Find and analyze EDR detections; retrieve behavior details and process trees |
 | `incidents` | Query and correlate security incidents; update status and add investigative notes |
@@ -328,7 +328,7 @@ The curated module layer, server core, and test suite originate from CrowdStrike
 These three servers cover complementary layers of a security stack — network/log (Alert Logic), endpoint protection (Sophos), and EDR/threat intel (CrowdStrike). Use them together for full-stack AI-powered SOC operations.
 
 | Server | Platform | Highlights |
-|--------|----------|------------|
+| -------- | ---------- | ------------ |
 | [falcon-mcp-extended](https://github.com/rijul170/falcon-mcp) | CrowdStrike Falcon | EDR telemetry, RTR, threat intel, MSSP Flight Control, 1,296 tools |
 | [sophos-central-mcp](https://github.com/rijul170/sophos-central-mcp) | Sophos Central | Endpoint isolation, Live Discover SQL, XDR, email/firewall/DNS, 334 tools |
 | [alertlogic-mcp](https://github.com/rijul170/alertlogic-mcp) | Alert Logic MDR | Incident response, SQL log search, SOAR, vulnerability management, 473 tools |
