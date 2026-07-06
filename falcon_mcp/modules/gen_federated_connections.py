@@ -16,9 +16,9 @@ from mcp.types import ToolAnnotations
 from pydantic import Field
 
 from falcon_mcp.common.errors import handle_api_response
+from falcon_mcp.common.generated_base import GeneratedModuleBase
 from falcon_mcp.common.logging import get_logger
 from falcon_mcp.common.utils import prepare_api_parameters
-from falcon_mcp.common.generated_base import GeneratedModuleBase
 
 logger = get_logger(__name__)
 
