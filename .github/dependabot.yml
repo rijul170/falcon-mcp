@@ -1,54 +1,44 @@
 version: 2
 updates:
-  # Python dependencies configuration (uv ecosystem)
+  # Python dependencies (uv ecosystem) — grouped monthly to keep PR noise low
   - package-ecosystem: "uv"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "monthly"
+    groups:
+      python-dependencies:
+        patterns:
+          - "*"
     commit-message:
       prefix: "deps(python):"
     labels:
       - "dependencies"
       - "python"
 
-  # Backup configuration (pip ecosystem)
-  # - package-ecosystem: "pip"
-  #   directory: "/"
-  #   schedule:
-  #     interval: "daily"
-  #   commit-message:
-  #     prefix: "deps(python):"
-  #   labels:
-  #     - "dependencies"
-  #     - "python"
-
-  # GitHub Actions configuration
+  # GitHub Actions
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
+    groups:
+      actions-dependencies:
+        patterns:
+          - "*"
     commit-message:
       prefix: "deps(actions):"
     labels:
       - "dependencies"
       - "github-actions"
 
-  # Docs site npm dependencies (pnpm lockfile)
-  - package-ecosystem: "npm"
-    directory: "/docs-site"
-    schedule:
-      interval: "weekly"
-    commit-message:
-      prefix: "deps(docs):"
-    labels:
-      - "dependencies"
-      - "docs"
-
-  # Docker configuration
+  # Docker base images
   - package-ecosystem: "docker"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
+    groups:
+      docker-dependencies:
+        patterns:
+          - "*"
     commit-message:
       prefix: "deps(docker):"
     labels:

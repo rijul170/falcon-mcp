@@ -13,6 +13,7 @@ from typing import Any
 from mcp.server import FastMCP
 from mcp.types import ToolAnnotations
 from pydantic import Field
+from pydantic.fields import FieldInfo
 
 from falcon_mcp.common.errors import _format_error_response
 from falcon_mcp.common.logging import get_logger
@@ -20,6 +21,18 @@ from falcon_mcp.common.utils import sanitize_input
 from falcon_mcp.modules.base import BaseModule
 
 logger = get_logger(__name__)
+
+
+def _unwrap_field_default(value: Any) -> Any:
+    """Return the declared default when a parameter still holds its FieldInfo.
+
+    FastMCP resolves Field(...) defaults before invoking a tool, but direct
+    calls (tests, Python API usage) receive the raw FieldInfo object, which is
+    truthy and breaks value checks downstream.
+    """
+    if isinstance(value, FieldInfo):
+        return value.default
+    return value
 
 
 class IdpModule(BaseModule):
@@ -124,6 +137,21 @@ class IdpModule(BaseModule):
         - Risk assessment
         """
         logger.debug("Starting comprehensive entity investigation")
+
+        entity_ids = _unwrap_field_default(entity_ids)
+        entity_names = _unwrap_field_default(entity_names)
+        email_addresses = _unwrap_field_default(email_addresses)
+        ip_addresses = _unwrap_field_default(ip_addresses)
+        domain_names = _unwrap_field_default(domain_names)
+        investigation_types = _unwrap_field_default(investigation_types)
+        timeline_start_time = _unwrap_field_default(timeline_start_time)
+        timeline_end_time = _unwrap_field_default(timeline_end_time)
+        timeline_event_types = _unwrap_field_default(timeline_event_types)
+        relationship_depth = _unwrap_field_default(relationship_depth)
+        limit = _unwrap_field_default(limit)
+        include_associations = _unwrap_field_default(include_associations)
+        include_accounts = _unwrap_field_default(include_accounts)
+        include_incidents = _unwrap_field_default(include_incidents)
 
         # Step 1: Validate inputs
         validation_error = self._validate_entity_identifiers(

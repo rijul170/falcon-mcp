@@ -18,6 +18,8 @@ class TestHostsModule(TestModules):
     def test_register_tools(self):
         """Test registering tools with the server."""
         expected_tools = [
+            "falcon_get_device_login_history",
+            "falcon_get_device_network_address_history",
             "falcon_get_host_details",
             "falcon_get_host_online_state",
             "falcon_get_log_collector_policy_info",

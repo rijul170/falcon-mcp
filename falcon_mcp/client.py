@@ -270,10 +270,10 @@ def get_version() -> str:
     """
     # Try importlib.metadata first (works when properly installed)
     try:
-        return version("falcon-mcp")
+        return version("falcon-mcp-extended")
     except PackageNotFoundError:
         logger.debug(
-            "falcon-mcp package not found via importlib.metadata, trying pyproject.toml"
+            "falcon-mcp-extended package not found via importlib.metadata, trying pyproject.toml"
         )
 
     # Try reading from pyproject.toml (works in development/Docker)

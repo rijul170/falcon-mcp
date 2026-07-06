@@ -1,11 +1,11 @@
 # Support
 
-This is a community-driven, open source project. While it is not an official CrowdStrike product, it is actively maintained by CrowdStrike and supported in collaboration with the open source developer community.
+falcon-mcp-extended is an independent, community-maintained open source project. It is **not** an official CrowdStrike product and is not supported by CrowdStrike — please do not contact CrowdStrike Technical Support about this project.
 
 ## How to Request Help
 
-Support for this project is primarily provided through this GitHub repository. When you submit issues publicly, you contribute to our shared knowledge base, improve self-service options for others, and often receive faster solutions.
+Support is provided through this GitHub repository. To request assistance, please open a [GitHub Issue](https://github.com/rijul170/falcon-mcp/issues). This is the appropriate channel for questions, bug reports, feature requests, enhancement suggestions, and documentation updates.
 
-To request assistance, please open a GitHub Issue. This is the appropriate channel for questions, bug reports, feature requests, enhancement suggestions, and documentation updates.
+When reporting a bug, include the server version, transport mode, enabled modules, and any relevant (redacted) log output.
 
-For CrowdStrike customers who prefer direct engagement, you may alternatively contact CrowdStrike Technical Support through your established support channels.
+For issues that also affect the upstream curated modules, consider reporting them to the official [CrowdStrike/falcon-mcp](https://github.com/CrowdStrike/falcon-mcp) project as well.

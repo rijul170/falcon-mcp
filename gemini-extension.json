@@ -1,5 +1,5 @@
 {
-  "name": "falcon-mcp",
+  "name": "falcon-mcp-extended",
   "version": "0.9.0",
   "mcpServers": {
     "falcon-mcp": {
@@ -7,6 +7,8 @@
       "args": [
         "--env-file",
         "${extensionPath}${pathSeparator}.env",
+        "--from",
+        "git+https://github.com/rijul170/falcon-mcp",
         "falcon-mcp"
       ]
     }

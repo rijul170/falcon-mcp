@@ -244,7 +244,7 @@ class TestFalconClient(unittest.TestCase):
 
         # Setup mock version calls for best case scenario
         def version_side_effect(package_name):
-            if package_name == "falcon-mcp":
+            if package_name == "falcon-mcp-extended":
                 return "1.2.3"
             if package_name == "crowdstrike-falconpy":
                 return "1.3.4"
@@ -290,7 +290,7 @@ class TestFalconClient(unittest.TestCase):
 
         # Setup mock version calls
         def version_side_effect(package_name):
-            if package_name == "falcon-mcp":
+            if package_name == "falcon-mcp-extended":
                 return "1.2.3"
             if package_name == "crowdstrike-falconpy":
                 return "1.3.4"

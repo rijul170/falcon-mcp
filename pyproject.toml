@@ -3,14 +3,14 @@ requires = ["setuptools>=42", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "falcon-mcp"
+name = "falcon-mcp-extended"
 version = "0.9.0"
-description = "CrowdStrike Falcon MCP Server"
+description = "Community extension of CrowdStrike's falcon-mcp MCP server with full Falcon API coverage (~1,296 tools)"
 readme = "README.md"
 requires-python = ">=3.11"
 license = {text = "MIT"}
 authors = [
-    {name = "CrowdStrike", email = "cloud-integrations@crowdstrike.com"}
+    {name = "Rijul", email = "rijul170@gmail.com"}
 ]
 classifiers = [
     "Development Status :: 3 - Alpha",
@@ -39,6 +39,11 @@ dev = [
     "ruff>=0.12.5",
     "black>=23.0.0",
 ]
+
+[project.urls]
+Homepage = "https://github.com/rijul170/falcon-mcp"
+Issues = "https://github.com/rijul170/falcon-mcp/issues"
+Upstream = "https://github.com/CrowdStrike/falcon-mcp"
 
 [project.scripts]
 falcon-mcp = "falcon_mcp.server:main"

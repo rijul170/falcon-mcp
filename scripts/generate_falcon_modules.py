@@ -248,7 +248,7 @@ def falconpy_field_mapping() -> dict[str, list[str]]:
     FalconPy can't fill (which would otherwise produce broken URLs).
     """
     try:
-        from falconpy._util import _uber  # noqa: WPS433 (local import by design)
+        from falconpy._util import _uber  # local import by design
 
         src = inspect.getsource(_uber.scrub_target)
     except Exception:  # noqa: BLE001
@@ -323,7 +323,7 @@ def build_method(ep, kind: str) -> tuple[str, str, str]:
     On a skip, returns ("__SKIP__", reason, operation_id) so the caller can log
     why an operation was omitted instead of silently emitting a broken tool.
     """
-    op, method, route = ep[0], ep[1], ep[2]
+    op, _method, route = ep[0], ep[1], ep[2]
     desc = clean_desc(ep[3] if len(ep) > 3 and isinstance(ep[3], str) else op)
     params = ep[5] if len(ep) > 5 and isinstance(ep[5], list) else []
     qparams = [p for p in params if isinstance(p, dict) and p.get("in") == "query"]

@@ -1,25 +1,30 @@
-![CrowdStrike Logo (Light)](https://raw.githubusercontent.com/CrowdStrike/.github/main/assets/cs-logo-light-mode.png#gh-light-mode-only)
-![CrowdStrike Logo (Dark)](https://raw.githubusercontent.com/CrowdStrike/.github/main/assets/cs-logo-dark-mode.png#gh-dark-mode-only)
+# falcon-mcp-extended
 
-# falcon-mcp
-
-[![PyPI version](https://badge.fury.io/py/falcon-mcp.svg)](https://badge.fury.io/py/falcon-mcp)
-[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/falcon-mcp)](https://pypi.org/project/falcon-mcp/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![MCP Protocol](https://img.shields.io/badge/MCP%20Protocol-2024--11--05-blue)](https://spec.modelcontextprotocol.io/)
-[![Documentation](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://crowdstrike.github.io/falcon-mcp/)
+[![Python](https://img.shields.io/badge/python-3.11%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![Tools](https://img.shields.io/badge/tools-1296-purple)](#architecture)
 [![GitHub Stars](https://img.shields.io/github/stars/rijul170/falcon-mcp?style=social)](https://github.com/rijul170/falcon-mcp)
+
+> [!NOTE]
+> **This is a community extension of CrowdStrike's official [falcon-mcp](https://github.com/CrowdStrike/falcon-mcp) server** (MIT licensed). It adds 106 auto-generated API wrapper modules (~904 additional tools) on top of the official curated tool set, for near-complete CrowdStrike Falcon API coverage. This project is **not affiliated with, maintained by, or endorsed by CrowdStrike**. If you only need the curated SOC workflows, use the [official server](https://github.com/CrowdStrike/falcon-mcp); use this project when you need API surface the official server doesn't expose yet.
 
 > **For SOC analysts and security engineers:** Stop tab-switching between CrowdStrike, your ticketing system, and your notes. Ask Claude to triage the alert, pull the process tree, check if the hash ran on other hosts, and draft the IR note — all in one conversation.
 
-**falcon-mcp** is a Model Context Protocol (MCP) server that gives AI agents — including Claude — direct, structured access to the CrowdStrike Falcon platform for intelligent security operations.
-
-> [!IMPORTANT]
-> **Public Preview**: This project is currently in public preview and under active development. Features and functionality may change before the stable 1.0 release. We welcome feedback through [GitHub Issues](https://github.com/crowdstrike/falcon-mcp/issues).
+**falcon-mcp-extended** is a Model Context Protocol (MCP) server that gives AI agents — including Claude — direct, structured access to the CrowdStrike Falcon platform for intelligent security operations.
 
 ## What It Does
 
-falcon-mcp bridges AI assistants and the CrowdStrike Falcon platform, enabling SOC analysts to ask natural-language questions and get answers backed by live Falcon data. It exposes Falcon's detection, investigation, response, and intelligence capabilities as MCP tools, so an AI agent can search detections, pivot through behaviors, contain hosts, and query threat intelligence — all from a single conversation. Designed for both interactive SOC workflows and automated security pipelines, it supports MSSP Flight Control so multi-tenant environments can be queried without switching consoles.
+This server bridges AI assistants and the CrowdStrike Falcon platform, enabling SOC analysts to ask natural-language questions and get answers backed by live Falcon data. It exposes Falcon's detection, investigation, response, and intelligence capabilities as MCP tools, so an AI agent can search detections, pivot through behaviors, contain hosts, and query threat intelligence — all from a single conversation. Designed for both interactive SOC workflows and automated security pipelines, it supports MSSP Flight Control so multi-tenant environments can be queried without switching consoles.
+
+## What This Adds Over the Official Server
+
+| Layer | Module count | Approximate tool count | Enabled by default |
+|-------|-------------|------------------------|--------------------|
+| Curated modules (from upstream, plus additions) | 50 | ~392 | Yes |
+| Auto-generated API wrappers (`gen_*`) — **this project's addition** | 106 | ~904 additional | No (opt-in) |
+
+The default mode exposes the curated layer (~392 tools), which covers every major SOC workflow with well-described, ergonomic tools. The full generated layer (total ~1,296 tools) can be enabled with `FALCON_MCP_ENABLE_GENERATED=1` for complete API surface coverage — including Message Center, ODS scans, response/content/device-control policies, installation tokens, MalQuery, FalconX Sandbox, QuickScan Pro, sample uploads, FileVantage, Falcon Complete Dashboard, cloud registration (AWS/Azure/GCP/OCI), Kubernetes admission control, container images/alerts/detections, network scanning, NGSIEM administration, knowledge bases, and much more.
 
 ## Features
 
@@ -38,17 +43,6 @@ falcon-mcp bridges AI assistants and the CrowdStrike Falcon platform, enabling S
 - **Scheduled Reports** — List, manage, and download Falcon scheduled report outputs
 - **Safety Gates** — Read-only mode suppresses all mutating tools at registration time; a separate destructive policy controls host containment, RTR execution, and account-level deletes
 
-## Architecture
-
-falcon-mcp ships two layers of tools:
-
-| Layer | Module count | Approximate tool count | Enabled by default |
-|-------|-------------|------------------------|--------------------|
-| Curated hand-written modules | 50 | ~392 | Yes |
-| Auto-generated API wrappers (`gen_*`) | 106 | ~904 additional | No (opt-in) |
-
-The default mode exposes the curated layer (~392 tools), which covers every major SOC workflow with well-described, ergonomic tools. The full generated layer (total ~1,296 tools) can be enabled with `FALCON_MCP_ENABLE_GENERATED=1` for complete API surface coverage.
-
 ## Prerequisites
 
 - Python 3.11 or later
@@ -57,32 +51,28 @@ The default mode exposes the curated layer (~392 tools), which covers every majo
 
 ## Installation
 
-### Fastest — uvx (no install required)
+> [!IMPORTANT]
+> Do **not** `pip install falcon-mcp` — that installs CrowdStrike's official package, which does not include the extended module layer. Install this project from source.
 
-Run directly without a persistent install:
-
-```bash
-uvx falcon-mcp
-```
-
-### Via uv tool install (persistent)
+### From source (recommended)
 
 ```bash
-uv tool install falcon-mcp
-```
-
-### Via pip
-
-```bash
-pip install falcon-mcp
-```
-
-### From source
-
-```bash
-git clone https://github.com/CrowdStrike/falcon-mcp.git
+git clone https://github.com/rijul170/falcon-mcp.git
 cd falcon-mcp
-uv sync
+uv sync --all-extras
+uv run falcon-mcp
+```
+
+### Via uvx directly from GitHub (no clone required)
+
+```bash
+uvx --from git+https://github.com/rijul170/falcon-mcp falcon-mcp
+```
+
+### Via pip from GitHub
+
+```bash
+pip install git+https://github.com/rijul170/falcon-mcp
 ```
 
 ## Configuration
@@ -126,7 +116,7 @@ FALCON_CLIENT_ID=your-client-id \
 FALCON_CLIENT_SECRET=your-client-secret \
 FALCON_BASE_URL=https://api.crowdstrike.com \
 FALCON_MCP_TRANSPORT=streamable-http \
-falcon-mcp
+uv run falcon-mcp
 ```
 
 **Step 2 — Add to `.claude/settings.json` (project) or `~/.claude/settings.json` (global):**
@@ -167,7 +157,7 @@ Stdio mode works best for Claude Desktop. Credentials are passed directly in the
   "mcpServers": {
     "falcon-mcp": {
       "command": "uvx",
-      "args": ["falcon-mcp"],
+      "args": ["--from", "git+https://github.com/rijul170/falcon-mcp", "falcon-mcp"],
       "env": {
         "FALCON_CLIENT_ID": "your-client-id",
         "FALCON_CLIENT_SECRET": "your-client-secret",
@@ -185,7 +175,7 @@ To load credentials from a `.env` file instead of embedding them in the config:
   "mcpServers": {
     "falcon-mcp": {
       "command": "uvx",
-      "args": ["--env-file", "/path/to/.env", "falcon-mcp"]
+      "args": ["--env-file", "/path/to/.env", "--from", "git+https://github.com/rijul170/falcon-mcp", "falcon-mcp"]
     }
   }
 }
@@ -193,23 +183,24 @@ To load credentials from a `.env` file instead of embedding them in the config:
 
 ## Docker
 
+Build the image locally from the included Dockerfile:
+
 ```bash
-# Pull the latest image
-docker pull quay.io/crowdstrike/falcon-mcp:latest
+git clone https://github.com/rijul170/falcon-mcp.git
+cd falcon-mcp
+docker build -t falcon-mcp-extended .
 
 # Run with a .env file (stdio transport)
-docker run -i --rm --env-file /path/to/.env quay.io/crowdstrike/falcon-mcp:latest
+docker run -i --rm --env-file /path/to/.env falcon-mcp-extended
 
 # Run with streamable-http transport
 docker run --rm -p 8000:8000 --env-file /path/to/.env \
-  quay.io/crowdstrike/falcon-mcp:latest --transport streamable-http --host 0.0.0.0
+  falcon-mcp-extended --transport streamable-http --host 0.0.0.0
 ```
-
-See the [Docker Deployment guide](https://crowdstrike.github.io/falcon-mcp/deployment/docker/) for building locally, custom ports, and advanced configurations.
 
 ## MSSP / Multi-Tenant Usage
 
-falcon-mcp has first-class support for CrowdStrike Flight Control environments.
+The server has first-class support for CrowdStrike Flight Control environments.
 
 **Default tenant targeting:** Set `FALCON_MEMBER_CID` to route all queries to a specific child CID without changing anything else:
 
@@ -251,7 +242,7 @@ export FALCON_MEMBER_CID="CHILD_CID_HERE"
 | `serverless` | Search for vulnerabilities in serverless functions |
 | `scheduled_reports` | List, manage, and download scheduled report executions |
 
-For required API scopes per module, see the [Module Overview](https://crowdstrike.github.io/falcon-mcp/modules/overview/).
+Plus 106 opt-in `gen_*` modules covering the remaining Falcon API surface (enable with `FALCON_MCP_ENABLE_GENERATED=1`). Each tool's description documents the required OAuth2 API scope.
 
 ## SOC Quick Start
 
@@ -277,18 +268,12 @@ Once the server is running and connected to Claude, you can start investigating 
 
 ## macOS Persistence (launchd)
 
-To run falcon-mcp as a persistent background service on macOS, an example launchd plist is provided in the `examples/` directory. Load it with:
-
-```bash
-launchctl load ~/Library/LaunchAgents/com.crowdstrike.falcon-mcp.plist
-```
-
-See `examples/` for the full plist template and configuration notes.
+To run the server as a persistent background service on macOS, an example launchd plist is provided in the `examples/launchd/` directory. See the template and configuration notes there.
 
 ## Cloud Deployment
 
-- [Amazon Bedrock AgentCore](https://crowdstrike.github.io/falcon-mcp/deployment/amazon-bedrock/)
-- [Google Cloud Run / Vertex AI](./examples/adk/README.md)
+- [Amazon Bedrock AgentCore](docs/deployment/amazon_bedrock_agentcore.md)
+- [Google Cloud Run / Vertex AI](docs/deployment/google_cloud.md)
 
 ## Security Considerations
 
@@ -301,7 +286,7 @@ See `examples/` for the full plist template and configuration notes.
 FALCON_MCP_ALLOW_DESTRUCTIVE=falcon_perform_host_action,falcon_batch_execute_active_responder_command
 ```
 
-**API credential scoping:** Create a dedicated Falcon API client for falcon-mcp with only the scopes required for your use case. Do not reuse admin-level API keys. Consult the [Module Overview](https://crowdstrike.github.io/falcon-mcp/modules/overview/) for the minimum required scopes per module.
+**API credential scoping:** Create a dedicated Falcon API client for this server with only the scopes required for your use case. Do not reuse admin-level API keys. Each tool's docstring documents its required API scope.
 
 **Credential storage:** Never embed API credentials in MCP configuration files committed to source control. Use environment variables, a `.env` file outside the repository root, or a secrets manager. For HTTP transports shared across users, enable `FALCON_MCP_API_KEY` to require authentication at the MCP layer in addition to Falcon API authentication.
 
@@ -311,7 +296,7 @@ FALCON_MCP_ALLOW_DESTRUCTIVE=falcon_perform_host_action,falcon_batch_execute_act
 
 ```bash
 # Clone and install with dev dependencies
-git clone https://github.com/CrowdStrike/falcon-mcp.git
+git clone https://github.com/rijul170/falcon-mcp.git
 cd falcon-mcp
 uv sync --all-extras
 
@@ -319,7 +304,7 @@ uv sync --all-extras
 uv run pytest
 ```
 
-This project uses [Conventional Commits](https://www.conventionalcommits.org/) for automated releases. Please follow the commit message format outlined in our [Contributing Guide](docs/CONTRIBUTING.md).
+Bug reports, feature requests, and pull requests are welcome via [GitHub Issues](https://github.com/rijul170/falcon-mcp/issues). For changes to the curated modules that would also benefit the official server, consider contributing them upstream to [CrowdStrike/falcon-mcp](https://github.com/CrowdStrike/falcon-mcp) as well.
 
 Additional developer documentation:
 
@@ -330,22 +315,24 @@ Additional developer documentation:
 
 ## Support
 
-This is a community-driven, open source project. While it is not an official CrowdStrike product, it is actively maintained by CrowdStrike and supported in collaboration with the open source developer community.
+This is an independent, community-maintained project. It is **not** an official CrowdStrike product and is not supported by CrowdStrike — do not contact CrowdStrike Technical Support about this project.
 
-For questions, bug reports, and feature requests, please open a [GitHub Issue](https://github.com/CrowdStrike/falcon-mcp/issues). CrowdStrike customers may also contact Technical Support through established support channels.
+For questions, bug reports, and feature requests, please open a [GitHub Issue](https://github.com/rijul170/falcon-mcp/issues).
 
-See [SUPPORT.md](SUPPORT.md) for more information.
+## Acknowledgements
+
+The curated module layer, server core, and test suite originate from CrowdStrike's official [falcon-mcp](https://github.com/CrowdStrike/falcon-mcp) project (MIT License, Copyright CrowdStrike). This project extends that foundation with auto-generated API coverage. All CrowdStrike and Falcon trademarks belong to CrowdStrike, Inc.
 
 ## Related MCP Servers
 
-These three servers cover complementary layers of a security stack — network/log (AlertLogic), endpoint protection (Sophos), and EDR/threat intel (CrowdStrike). Use them together for full-stack AI-powered SOC operations.
+These three servers cover complementary layers of a security stack — network/log (Alert Logic), endpoint protection (Sophos), and EDR/threat intel (CrowdStrike). Use them together for full-stack AI-powered SOC operations.
 
 | Server | Platform | Highlights |
 |--------|----------|------------|
-| [falcon-mcp](https://github.com/rijul170/falcon-mcp) | CrowdStrike Falcon | EDR telemetry, RTR, threat intel, MSSP Flight Control, 1,296 tools |
+| [falcon-mcp-extended](https://github.com/rijul170/falcon-mcp) | CrowdStrike Falcon | EDR telemetry, RTR, threat intel, MSSP Flight Control, 1,296 tools |
 | [sophos-central-mcp](https://github.com/rijul170/sophos-central-mcp) | Sophos Central | Endpoint isolation, Live Discover SQL, XDR, email/firewall/DNS, 334 tools |
 | [alertlogic-mcp](https://github.com/rijul170/alertlogic-mcp) | Alert Logic MDR | Incident response, SQL log search, SOAR, vulnerability management, 473 tools |
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+MIT — see [LICENSE](LICENSE). Original code Copyright (c) CrowdStrike; extensions Copyright (c) the falcon-mcp-extended contributors.

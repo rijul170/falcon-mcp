@@ -236,8 +236,7 @@ API_SCOPE_REQUIREMENTS = {
     "ExternalListDataConnectors": ["NGSIEM Data Connections API:read"],
     "ExternalGetDataConnectionStatus": ["NGSIEM Data Connections API:read"],
     # Alerts operations (unified alerts module)
-    "GetQueriesAlertsV2": ["Alerts:read"],
-    "PostEntitiesAlertsV2": ["Alerts:read"],
+    # GetQueriesAlertsV2 / PostEntitiesAlertsV2 are defined at the top of this dict
     "PostAggregatesAlertsV2": ["Alerts:read"],
     "PatchEntitiesAlertsV3": ["Alerts:write"],
     # Event Streams operations
@@ -462,6 +461,57 @@ API_SCOPE_REQUIREMENTS = {
     "deleteScheduledExclusions": ["Falcon FileVantage:write"],
     "signalChangesExternal": ["Falcon FileVantage:write"],
     "startActions": ["Falcon FileVantage:write"],
+    # Sample uploads / sandbox / scanning (gen_* module operations)
+    "ArchiveUploadV2": ["Sample Uploads:write"],
+    "UploadSampleV3": ["Sample Uploads:write"],
+    "UploadSampleV2": ["Falconx Sandbox:write"],
+    "UploadFileQuickScanPro": ["QuickScan Pro:write"],
+    # Identity Protection sensors (gen_identity_protection)
+    "GetSensorAggregates": ["Identity Protection GraphQL:read"],
+    # On-demand scan aggregates (gen_ods)
+    "aggregate_query_scan_host_metadata": ["Ods:read"],
+    "aggregate_scans": ["Ods:read"],
+    "aggregate_scheduled_scans": ["Ods:read"],
+    # Network scanning (gen_network_scan_* modules)
+    "aggregate_scan_runs": ["Network scanning:read"],
+    "aggregate_scansMixin0": ["Network scanning:read"],
+    "get_scan_run_reports": ["Network scanning:read"],
+    "get_scan_runs": ["Network scanning:read"],
+    "get_scans": ["Network scanning:read"],
+    "get_template_configs": ["Network scanning:read"],
+    "get_templates": ["Network scanning:read"],
+    "query_scan_runs": ["Network scanning:read"],
+    "query_scansMixin0": ["Network scanning:read"],
+    "query_templates": ["Network scanning:read"],
+    "create_scan_runs": ["Network scanning:write"],
+    "create_scans": ["Network scanning:write"],
+    "create_templates": ["Network scanning:write"],
+    "delete_scans": ["Network scanning:write"],
+    "delete_templates": ["Network scanning:write"],
+    "update_scan_runs": ["Network scanning:write"],
+    "update_scans": ["Network scanning:write"],
+    "update_templates": ["Network scanning:write"],
+    # Charlotte AI Agentic Studio knowledge bases (gen_knowledge_base_* modules)
+    "aggregates_knowledge_base_audit_events_v1": ["Charlotte Ai Agent Definition:read"],
+    "combined_knowledge_base_audit_events_v1": ["Charlotte Ai Agent Definition:read"],
+    "entities_knowledge_base_audit_events_v1": ["Charlotte Ai Agent Definition:read"],
+    "queries_knowledge_base_audit_events_v1": ["Charlotte Ai Agent Definition:read"],
+    "aggregates_knowledge_bases_v1": ["Charlotte Ai Agent Definition:read"],
+    "entities_knowledge_bases_v1": ["Charlotte Ai Agent Definition:read"],
+    "queries_knowledge_bases_v1": ["Charlotte Ai Agent Definition:read"],
+    "entities_knowledge_bases_create_v1": ["Charlotte Ai Agent Definition:write"],
+    "entities_knowledge_bases_update_v1": ["Charlotte Ai Agent Definition:write"],
+    "entities_knowledge_base_files_v1": ["Charlotte Ai Agent Definition:read"],
+    "entities_knowledge_base_files_download_v1": ["Charlotte Ai Agent Definition:read"],
+    "queries_knowledge_base_files_v1": ["Charlotte Ai Agent Definition:read"],
+    "entities_knowledge_base_files_create_v1": ["Charlotte Ai Agent Definition:write"],
+    "entities_knowledge_base_files_delete_v1": ["Charlotte Ai Agent Definition:write"],
+    "entities_knowledge_base_files_update_v1": ["Charlotte Ai Agent Definition:write"],
+    # Cloud security risks timeline (gen_cloud_security_risks)
+    "cloud_security_timeline_risks_enriched": ["Cloud Security API Assets:read"],
+    # IOC extras (gen_ioc)
+    "entities_processes": ["IOCs:read"],
+    "indicator_aggregate_v1": ["IOC Management:read"],
     # Add more mappings as needed
 }
 

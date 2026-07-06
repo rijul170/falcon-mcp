@@ -1,4 +1,4 @@
-# CrowdStrike Community Code of Conduct
+# Code of Conduct
 
 ## Our Pledge
 
@@ -62,11 +62,8 @@ Each project has one or more project maintainers. These individuals are
 responsible for enforcing the Code of Conduct within a given project.
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
-reported to the project maintainers at any time. Concerns can also be escalated
-directly to community leaders at:
-
-* [oss-conduct@crowdstrike.com](mailto:oss-conduct@crowdstrike.com)
-* [Ethics and Compliance Hotline](https://crowdstrike.ethicspoint.com/)
+reported to the project maintainers at any time by opening an issue in this
+repository or contacting the maintainer directly.
 
 All complaints will be reviewed and investigated promptly and fairly.
 
@@ -134,10 +131,5 @@ For answers to common questions about this code of conduct, see the FAQ at
 
 ## Improving the Code of Conduct
 
-Suggestions welcome on how to improve this code of conduct!
-
-* Have a suggestion or idea to discuss? Open a discussion
-at [https://github.com/CrowdStrike/community/discussions](https://github.com/CrowdStrike/community/discussions)!
-
-* Want to submit a pull request with recommended changes? Submit a PR
-against [https://github.com/CrowdStrike/community/blob/main/docs/pages/code-of-conduct.md](https://github.com/CrowdStrike/community/blob/main/docs/pages/code-of-conduct.md).
+Suggestions for improving this code of conduct are welcome — open an issue or
+pull request in this repository.
