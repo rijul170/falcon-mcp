@@ -1,3 +1,5 @@
+<!-- mcp-name: io.github.rijul170/falcon-mcp -->
+
 # falcon-mcp-extended
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)

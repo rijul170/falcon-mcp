@@ -1,0 +1,20 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.rijul170/falcon-mcp",
+  "description": "Community extension of CrowdStrike falcon-mcp with near-complete Falcon API coverage",
+  "version": "0.9.0",
+  "repository": {
+    "url": "https://github.com/rijul170/falcon-mcp",
+    "source": "github"
+  },
+  "packages": [
+    {
+      "registryType": "pypi",
+      "identifier": "falcon-mcp-extended",
+      "version": "0.9.0",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}
