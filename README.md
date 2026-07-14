@@ -7,6 +7,9 @@
 [![Python](https://img.shields.io/badge/python-3.11%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![Tools](https://img.shields.io/badge/tools-1296-purple)](#what-this-adds-over-the-official-server)
 [![GitHub Stars](https://img.shields.io/github/stars/rijul170/falcon-mcp?style=social)](https://github.com/rijul170/falcon-mcp)
+[![CI](https://github.com/rijul170/falcon-mcp/actions/workflows/python-test.yml/badge.svg)](https://github.com/rijul170/falcon-mcp/actions/workflows/python-test.yml)
+[![PyPI](https://img.shields.io/pypi/v/falcon-mcp-extended)](https://pypi.org/project/falcon-mcp-extended/)
+[![MCP Registry](https://img.shields.io/badge/MCP%20Registry-active-0A7BBB)](https://registry.modelcontextprotocol.io/v0/servers?search=io.github.rijul170/falcon-mcp)
 
 > [!NOTE]
 > **This is a community extension of CrowdStrike's official [falcon-mcp](https://github.com/CrowdStrike/falcon-mcp) server** (MIT licensed). It adds 106 auto-generated API wrapper modules (~904 additional tools) on top of the official curated tool set, for near-complete CrowdStrike Falcon API coverage. This project is **not affiliated with, maintained by, or endorsed by CrowdStrike**. If you only need the curated SOC workflows, use the [official server](https://github.com/CrowdStrike/falcon-mcp); use this project when you need API surface the official server doesn't expose yet.
