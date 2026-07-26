@@ -57,9 +57,21 @@ The default mode exposes the curated layer (~392 tools), which covers every majo
 ## Installation
 
 > [!IMPORTANT]
-> Do **not** `pip install falcon-mcp` — that installs CrowdStrike's official package, which does not include the extended module layer. Install this project from source.
+> The correct package name is **`falcon-mcp-extended`**. Do **not** `pip install falcon-mcp` — that is CrowdStrike's official package, which does not include the extended module layer.
 
-### From source (recommended)
+### From PyPI (recommended)
+
+```bash
+pip install falcon-mcp-extended
+```
+
+Or with uv:
+
+```bash
+uv pip install falcon-mcp-extended
+```
+
+### From source
 
 ```bash
 git clone https://github.com/rijul170/falcon-mcp.git
